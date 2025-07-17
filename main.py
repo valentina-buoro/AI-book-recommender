@@ -151,7 +151,9 @@ with gr.Blocks(theme = gr.themes.Glass()) as dashboard:
                         inputs=[user_query,category_dropdown,tone_dropdown],outputs=output)
 """
 
+"""
+local development only
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)"""
