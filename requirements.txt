@@ -51,3 +51,4 @@ tqdm~=4.67.1
 langchain-huggingface
 langchain_chroma
 jinja2
+sentence-transformers
