@@ -49,3 +49,4 @@ matplotlib~=3.10.3
 transformers~=4.53.1
 tqdm~=4.67.1
 langchain-huggingface
+langchain_chroma
