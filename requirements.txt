@@ -48,3 +48,4 @@ seaborn~=0.13.2
 matplotlib~=3.10.3
 transformers~=4.53.1
 tqdm~=4.67.1
+langchain-huggingface
