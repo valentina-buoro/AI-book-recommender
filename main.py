@@ -1,3 +1,6 @@
+import os
+import warnings
+import logging
 import pandas as pd
 import numpy as np
 from dotenv import load_dotenv
@@ -14,6 +17,24 @@ from typing import Optional, Literal
 from fastapi import FastAPI, HTTPException, Request, Query
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+
+# AGGRESSIVE LOGGING REDUCTION FOR RAILWAY
+logging.getLogger().setLevel(logging.ERROR)  # Root logger to ERROR only
+logging.getLogger("uvicorn").setLevel(logging.ERROR)
+logging.getLogger("uvicorn.access").setLevel(logging.CRITICAL)  # No access logs
+logging.getLogger("uvicorn.error").setLevel(logging.ERROR)
+logging.getLogger("fastapi").setLevel(logging.ERROR)
+
+# Silence ML libraries
+logging.getLogger("transformers").setLevel(logging.CRITICAL)
+logging.getLogger("torch").setLevel(logging.CRITICAL)
+logging.getLogger("tensorflow").setLevel(logging.CRITICAL)
+logging.getLogger("huggingface_hub").setLevel(logging.CRITICAL)
+logging.getLogger("langchain").setLevel(logging.CRITICAL)
+
+# Silence all warnings
+warnings.filterwarnings("ignore")
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 app = FastAPI()
 
