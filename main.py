@@ -29,7 +29,11 @@ books["large_thumbnail"] = np.where(
 )
 
 raw_documents = TextLoader("tagged_descriptions.txt").load()
-text_splitter = CharacterTextSplitter(separator="\n", chunk_size=0, chunk_overlap=0)
+text_splitter = CharacterTextSplitter(
+    separator="\n",
+    chunk_size=500,
+    chunk_overlap=100,
+)
 documents = text_splitter.split_documents(raw_documents)
 
 huggingface_embeddings = HuggingFaceEmbeddings(
@@ -151,9 +155,9 @@ with gr.Blocks(theme = gr.themes.Glass()) as dashboard:
                         inputs=[user_query,category_dropdown,tone_dropdown],outputs=output)
 """
 
-"""
-local development only
+
+# local development only
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)"""
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
